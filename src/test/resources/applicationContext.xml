@@ -6,12 +6,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/data/elasticsearch http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- bean管理支持注解 -->
-    <context:component-scan base-package="com.wqs.root"/>
+
     <!-- Spring data 自动扫描repository接口，生成实现类 -->
-    <elasticsearch:repositories base-package="com.wqs.root.es"/>
+    <elasticsearch:repositories base-package="com.wqs.root.repository"/>
     <!--ip:port换成具体的ip和端口，多个以逗号分隔-->
-    <elasticsearch:transport-client id="client" cluster-name="elasticsearch" cluster-nodes="127.0.0.1:9300"/>
+    <elasticsearch:node-client id="client" local="true"/>
+   <!-- <elasticsearch:transport-client id="client" cluster-name="elasticsearch" cluster-nodes="127.0.0.1:9300" />-->
     <!--配置elasticsearchTemplate-->
     <bean id="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
         <constructor-arg ref="client"/>
