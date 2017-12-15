@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Document(indexName = "user_index",type = "test_user_index")
 public class User {
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String sex;
 
@@ -26,11 +26,11 @@ public class User {
         this.name = name;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
